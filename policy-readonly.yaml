@@ -1,0 +1,13 @@
+apiVersion: security.kubearmor.com/v1
+kind: KubeArmorHostPolicy
+metadata:
+  name: block-file-readonly
+spec:
+  nodeSelector:
+    matchLabels:
+      kubearmor.io/hostname: "*"
+  file:
+    matchPaths:
+    - path: Z:\test\file.txt
+      readOnly: true
+  action: Block
