@@ -1,0 +1,13 @@
+apiVersion: security.kubearmor.com/v1
+kind: KubeArmorPolicy
+metadata:
+  name: block-deep-paths
+spec:
+  selector:
+    matchLabels:
+      kubearmor.io/hostname: "*" # Adjust to match your Windows endpoint labels
+  file:
+    matchDirectories:
+    - dir: C:\Users\ck\windows-testing\DeepPaths\
+      recursive: true
+  action: Block
